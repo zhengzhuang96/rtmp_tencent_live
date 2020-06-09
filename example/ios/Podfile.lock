@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - rtmp_tencent_live (0.0.1):
+    - Flutter
+    - TXLiteAVSDK_Professional
+  - TXLiteAVSDK_Professional (7.2.8940)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - rtmp_tencent_live (from `.symlinks/plugins/rtmp_tencent_live/ios`)
+
+SPEC REPOS:
+  trunk:
+    - TXLiteAVSDK_Professional
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  rtmp_tencent_live:
+    :path: ".symlinks/plugins/rtmp_tencent_live/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  rtmp_tencent_live: 1dd453e3be96a60b9618d4eff62d0759882c872c
+  TXLiteAVSDK_Professional: 4afe0775eeff059219964472fd4fa0f1ea4ca860
+
+PODFILE CHECKSUM: f32fb4e7c14f8b3ca19a369d7be425dd9241af27
+
+COCOAPODS: 1.9.1
