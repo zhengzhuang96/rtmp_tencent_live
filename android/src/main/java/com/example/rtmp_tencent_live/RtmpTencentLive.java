@@ -20,7 +20,7 @@ import io.flutter.plugin.platform.PlatformView;
 
 import static android.content.ContentValues.TAG;
 
-public class RcmpTencentLive implements PlatformView, MethodChannel.MethodCallHandler {
+public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHandler {
 
     //    private final TextView myNativeView;
     private TXCloudVideoView mView;
@@ -30,7 +30,7 @@ public class RcmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     boolean Mirror = true;
     boolean onFlashLight = true;    /// 摄像头打开状态
 
-    RcmpTencentLive(Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
+    RtmpTencentLive(Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
         //        TextView myNativeView = new TextView(context);
         //        myNativeView.setText(params.get("text").toString());
         //        this.myNativeView = myNativeView;

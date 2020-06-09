@@ -10,7 +10,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** RtmpTencentLivePlugin */
-public class RampTencentLivePlugin implements FlutterPlugin, MethodCallHandler {
+public class RtmpTencentLivePlugin implements FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -19,7 +19,7 @@ public class RampTencentLivePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    RampTencentLiveFactory factory = new RampTencentLiveFactory(flutterPluginBinding.getBinaryMessenger());
+    RtmpTencentLiveFactory factory = new RtmpTencentLiveFactory(flutterPluginBinding.getBinaryMessenger());
     flutterPluginBinding.getPlatformViewRegistry().registerViewFactory("TencentLive", factory);
   }
 
@@ -33,17 +33,17 @@ public class RampTencentLivePlugin implements FlutterPlugin, MethodCallHandler {
   // depending on the user's project. onAttachedToEngine or registerWith must both be defined
   // in the same class.
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "rtmp_tencent_live");
-    channel.setMethodCallHandler(new RampTencentLivePlugin());
+//    final MethodChannel channel = new MethodChannel(registrar.messenger(), "rtmp_tencent_live");
+//    channel.setMethodCallHandler(new RtmpTencentLivePlugin());
   }
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
-    }
+//    if (call.method.equals("getPlatformVersion")) {
+//      result.success("Android " + android.os.Build.VERSION.RELEASE);
+//    } else {
+//      result.notImplemented();
+//    }
   }
 
   @Override
