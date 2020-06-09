@@ -1,8 +1,8 @@
 name: rtmp_tencent_live
-description: A new Flutter plugin.
+description: 腾讯推流直播flutter版本
 version: 0.0.1
-author:
-homepage:
+# author:
+homepage: https://github.com/zhengzhuang96/rtmp_tencent_live.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
