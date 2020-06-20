@@ -56,10 +56,16 @@ class LivePage extends StatefulWidget {
 class _LivePageState extends State<LivePage> {
   MethodChannel _controller;
 
+  double value = 0;
+  double value2 = 0;
+  double value3 = 0;
+  double value4 = 0;
+
   /// 按钮组建
   Widget _buttonList(Icon icons, String title, Function onClick) {
     return InkWell(
       child: Container(
+        color: Color.fromARGB(100, 255, 255, 255),
         child: Column(
           children: <Widget>[
             icons,
@@ -99,7 +105,7 @@ class _LivePageState extends State<LivePage> {
                       children: <Widget>[
                         Text('data'),
                         Positioned(
-                          bottom: 0,
+                          top: 0,
                           left: 0,
                           child: Container(
                             padding: EdgeInsets.only(
@@ -109,21 +115,95 @@ class _LivePageState extends State<LivePage> {
                               top: 20.0,
                             ),
                             width: MediaQuery.of(context).size.width,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            child: Column(
                               children: <Widget>[
-                                _buttonList(Icon(Icons.ac_unit), '翻转', () {
-                                  _controller.invokeMethod('setSwitchCamera');
-                                }),
-                                _buttonList(Icon(Icons.ac_unit), '打开后置灯光', () {
-                                  _controller.invokeMethod('setTurnOnFlashLight');
-                                }),
-                                _buttonList(Icon(Icons.ac_unit), '美颜', () {
-                                  _controller.invokeMethod('setBeautyStyle', 1);
-                                }),
-                                _buttonList(Icon(Icons.ac_unit), '镜像模式', () {
-                                  _controller.invokeMethod('setMirror', 1);
-                                }),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    _buttonList(Icon(Icons.ac_unit), '翻转', () {
+                                      _controller.invokeMethod('setSwitchCamera');
+                                    }),
+                                    _buttonList(Icon(Icons.ac_unit), '打开后置灯光', () {
+                                      _controller.invokeMethod('setTurnOnFlashLight');
+                                    }),
+                                    _buttonList(Icon(Icons.ac_unit), '镜像模式', () {
+                                      _controller.invokeMethod('setMirror', 1);
+                                    }),
+                                    _buttonList(Icon(Icons.ac_unit), '美颜', () {
+                                      _controller.invokeMethod('setBeautyFilter', 1);
+                                    }),
+                                  ],
+                                ),
+                                Text('磨皮'),
+                                SliderTheme( //自定义风格
+                                  data: SliderTheme.of(context).copyWith(
+                                      activeTrackColor: Colors.pink, //进度条滑块左边颜色
+                                      inactiveTrackColor: Colors.blue, //进度条滑块右边颜色
+                                      thumbColor: Colors.yellow, //滑块颜色
+                                      overlayColor: Colors.green, //滑块拖拽时外圈的颜色
+                                      overlayShape: RoundSliderOverlayShape(//可继承SliderComponentShape自定义形状
+                                        overlayRadius: 25, //滑块外圈大小
+                                      ),
+                                      thumbShape: RoundSliderThumbShape(//可继承SliderComponentShape自定义形状
+                                        disabledThumbRadius: 15, //禁用是滑块大小
+                                        enabledThumbRadius: 15, //滑块大小
+                                      ),
+                                      inactiveTickMarkColor: Colors.black,
+                                      tickMarkShape: RoundSliderTickMarkShape(//继承SliderTickMarkShape可自定义刻度形状
+                                        tickMarkRadius: 4.0,//刻度大小
+                                      ),
+                                      showValueIndicator: ShowValueIndicator.onlyForDiscrete,//气泡显示的形式
+                                      valueIndicatorColor: Colors.red,//气泡颜色
+                                      valueIndicatorShape: PaddleSliderValueIndicatorShape(),//气泡形状
+                                      valueIndicatorTextStyle: TextStyle(color: Colors.black),//气泡里值的风格
+                                      trackHeight: 10 //进度条宽度
+                                  ),
+                                  child: Slider(
+                                    value: value,
+                                    onChanged: (v) {
+                                      setState(() =>  value = v);
+                                      _controller.invokeMethod('setDermabrasion', v.toInt());
+                                    },
+                                    label: "磨皮:$value",//气泡的值
+                                    divisions: 10, //进度条上显示多少个刻度点
+                                    max: 10,
+                                    min: 0,
+                                  ),
+                                ),
+                                Text('美白'),
+                                SliderTheme( //自定义风格
+                                  data: SliderTheme.of(context).copyWith(
+                                      activeTrackColor: Colors.pink, //进度条滑块左边颜色
+                                  ),
+                                  child: Slider(
+                                    value: value2,
+                                    onChanged: (v) {
+                                      setState(() =>  value2 = v);
+                                      _controller.invokeMethod('setWhitening', v.toInt());
+                                    },
+                                    label: "美白:$value2",//气泡的值
+                                    divisions: 10, //进度条上显示多少个刻度点
+                                    max: 10,
+                                    min: 0,
+                                  ),
+                                ),
+                                Text('红润'),
+                                SliderTheme( //自定义风格
+                                  data: SliderTheme.of(context).copyWith(
+                                      activeTrackColor: Colors.pink, //进度条滑块左边颜色
+                                  ),
+                                  child: Slider(
+                                    value: value3,
+                                    onChanged: (v) {
+                                      setState(() =>  value3 = v);
+                                      _controller.invokeMethod('setUpRuddy', v.toInt());
+                                    },
+                                    label: "红润:$value3",//气泡的值
+                                    divisions: 10, //进度条上显示多少个刻度点
+                                    max: 10,
+                                    min: 0,
+                                  ),
+                                ),
                               ],
                             ),
                           ),

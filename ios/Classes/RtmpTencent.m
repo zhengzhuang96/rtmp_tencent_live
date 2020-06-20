@@ -18,6 +18,12 @@
     UILabel *_subLabel;
     FlutterMethodChannel* _channel;
     RtmpCameraViewController *camera;
+    BOOL _islight;
+    BOOL _ismirror;
+    
+    float _beauty;
+    float _whiten;
+    float _ruddiness;
 }
 
 - (id)initWithFrame:(CGRect)frame viewId:(NSString *)viewId args:(id)args binaryMessager:(NSObject<FlutterBinaryMessenger> *)messager
@@ -27,6 +33,11 @@
         _frame = frame;
         _viewId = viewId;
         _args = args;
+        _islight = NO;
+        _ismirror = NO;
+        _beauty = 0;
+        _whiten = 0;
+        _ruddiness = 0;
     }
 
     FlutterMethodChannel* _channel = [FlutterMethodChannel methodChannelWithName:[NSString stringWithFormat:@"tencentlive_%@",viewId] binaryMessenger:messager];
@@ -41,19 +52,51 @@
 
 -(void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result{
     NSLog(@"---- 监听 ----");
-    if ([call.method isEqualToString:@"setText"]) {
-        NSLog(@"qqqqqq");
-    }
     if ([call.method isEqualToString:@"setTurnOnFlashLight"]) {
+        if (!_islight) {
+            [camera.pusher toggleTorch:YES];
+        }else{
+            [camera.pusher toggleTorch:NO];
+        }
+        _islight = !_islight;
         NSLog(@"打开后置灯光");
     }
-    if ([call.method isEqualToString:@"setBeautyStyle"]) {
-        NSLog(@"美颜");
-    }
     if ([call.method isEqualToString:@"setSwitchCamera"]) {
-        NSLog(@"美颜");
+        NSLog(@"切换前后摄像头");
         [camera.pusher switchCamera];
     }
+    if ([call.method isEqualToString:@"setMirror"]) {
+        NSLog(@"镜像");
+        if (!_ismirror) {
+            [camera.pusher setMirror:YES];
+        }else{
+            [camera.pusher setMirror:NO];
+        }
+        _ismirror = !_ismirror;
+    }
+    if ([call.method isEqualToString:@"setDermabrasion"]) {
+        NSString *info = call.arguments;
+        _beauty = [info floatValue];
+        [self mysetbeautystyle];
+        NSLog(@"磨皮 ----- %@",info);
+        
+    }
+    if ([call.method isEqualToString:@"setWhitening"]) {
+        NSString *info = call.arguments;
+        NSLog(@"美白 ----- %@",info);
+        _whiten = [info floatValue];
+        [self mysetbeautystyle];
+    }
+    if ([call.method isEqualToString:@"setUpRuddy"]) {
+       NSString *info = call.arguments;
+       NSLog(@"红润 ----- %@",info);
+        _ruddiness = [info floatValue];
+        [self mysetbeautystyle];
+    }
+}
+
+-(void)mysetbeautystyle {
+    [camera.pusher setBeautyStyle:0 beautyLevel:_beauty whitenessLevel:_whiten ruddinessLevel:_ruddiness];
 }
 
 - (UIView *)view
