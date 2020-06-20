@@ -129,9 +129,6 @@ class _LivePageState extends State<LivePage> {
                                     _buttonList(Icon(Icons.ac_unit), '镜像模式', () {
                                       _controller.invokeMethod('setMirror', 1);
                                     }),
-                                    _buttonList(Icon(Icons.ac_unit), '美颜', () {
-                                      _controller.invokeMethod('setBeautyFilter', 1);
-                                    }),
                                   ],
                                 ),
                                 Text('磨皮'),
