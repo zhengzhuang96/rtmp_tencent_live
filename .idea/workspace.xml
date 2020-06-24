@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/rtmp_tencent_live/RtmpTencentLive.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/rtmp_tencent_live/RtmpTencentLive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/RtmpTencent.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/RtmpTencent.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -48,21 +49,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1592642944150">
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1592644932562">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592642944150" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1592642944149">
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592644932562" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1592644932561">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.center/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592642944149" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1592642944148">
+    <state width="1878" height="304" key="GridCell.Tab.0.center/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592644932561" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1592644932561">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.left/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592642944148" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1592642944149">
+    <state width="1878" height="304" key="GridCell.Tab.0.left/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592644932561" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1592644932562">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.right/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592642944149" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/35.23.1405.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1592644932562" />
   </component>
 </project>

@@ -1,6 +1,8 @@
 # rtmp_tencent_live
 
-A new Flutter plugin.
+腾讯直播flutter插件
+
+不懂得问题欢迎提issues，或者欢迎加入flutter腾讯直播，群聊号码：1128573542
 
 ## Getting Started
 
