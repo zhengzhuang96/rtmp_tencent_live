@@ -40,7 +40,7 @@
         _ruddiness = 0;
     }
 
-    FlutterMethodChannel* _channel = [FlutterMethodChannel methodChannelWithName:[NSString stringWithFormat:@"tencentlive_%@",viewId] binaryMessenger:messager];
+    FlutterMethodChannel* _channel = [FlutterMethodChannel methodChannelWithName:[NSString stringWithFormat:@"rtmptencentlivepush_%@",viewId] binaryMessenger:messager];
     
     __weak typeof (self)WealSelf = self;
     [_channel setMethodCallHandler:^(FlutterMethodCall * _Nonnull call, FlutterResult  _Nonnull result) {
@@ -75,23 +75,27 @@
         _ismirror = !_ismirror;
     }
     if ([call.method isEqualToString:@"setDermabrasion"]) {
-        NSString *info = call.arguments;
-        _beauty = [info floatValue];
+        NSDictionary *info = call.arguments;
+        _beauty = [info[@"val"] floatValue];
         [self mysetbeautystyle];
         NSLog(@"磨皮 ----- %@",info);
-        
     }
     if ([call.method isEqualToString:@"setWhitening"]) {
-        NSString *info = call.arguments;
-        NSLog(@"美白 ----- %@",info);
-        _whiten = [info floatValue];
+        NSDictionary *info = call.arguments;
+        _whiten = [info[@"val"] floatValue];
         [self mysetbeautystyle];
     }
     if ([call.method isEqualToString:@"setUpRuddy"]) {
-       NSString *info = call.arguments;
-       NSLog(@"红润 ----- %@",info);
-        _ruddiness = [info floatValue];
+        NSDictionary *info = call.arguments;
+        _ruddiness = [info[@"val"] floatValue];
         [self mysetbeautystyle];
+    }
+    if ([call.method isEqualToString:@"startLive"]) {
+       NSLog(@"推流 ");
+       NSString* rtmpUrl = _args[@"rtmpURL"];
+       // 此处填写您的 rtmp 推流地址
+        int i = [camera.pusher startPush:rtmpUrl];
+       NSLog(@"1111111111---    %d",i);
     }
 }
 

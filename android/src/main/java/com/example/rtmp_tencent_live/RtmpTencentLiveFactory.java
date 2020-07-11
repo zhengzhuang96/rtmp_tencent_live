@@ -1,5 +1,6 @@
 package com.example.rtmp_tencent_live;
 
+import android.app.Activity;
 import android.content.Context;
 
 import java.util.Map;
@@ -12,7 +13,7 @@ import io.flutter.plugin.platform.PlatformViewFactory;
 public class RtmpTencentLiveFactory extends PlatformViewFactory {
     private final BinaryMessenger messenger;
 
-    public RtmpTencentLiveFactory(BinaryMessenger messenger) {
+    public RtmpTencentLiveFactory(BinaryMessenger messenger, Activity activity) {
         super(StandardMessageCodec.INSTANCE);
         this.messenger = messenger;
     }

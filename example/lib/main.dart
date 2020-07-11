@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
+import 'package:rtmp_tencent_live/tencent_live_push_Controller.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+  await TencentLive.instance.init(
+      licenseUrl: 'http://license.vod2.myqcloud.com/license/v1/a062c6677c9e5273ee05e7df6f087810/TXLiveSDK.licence',
+      licenseKey: '5bf89b2c4cf8ab1ca33a36ff20137071'
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -12,33 +16,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
-//    initPlatformState();
   }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-//  Future<void> initPlatformState() async {
-//    String platformVersion;
-//    // Platform messages may fail, so we use a try/catch PlatformException.
-//    try {
-//      platformVersion = await Rtmptencent.platformVersion;
-//    } on PlatformException {
-//      platformVersion = 'Failed to get platform version.';
-//    }
-//
-//    // If the widget was removed from the tree while the asynchronous platform
-//    // message was in flight, we want to discard the reply rather than calling
-//    // setState to update our non-existent appearance.
-//    if (!mounted) return;
-//
-//    setState(() {
-//      _platformVersion = platformVersion;
-//    });
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +36,7 @@ class LivePage extends StatefulWidget {
 }
 
 class _LivePageState extends State<LivePage> {
-  MethodChannel _controller;
+  TencentLivePushController _controller;
 
   double value = 0;
   double value2 = 0;
@@ -85,10 +67,8 @@ class _LivePageState extends State<LivePage> {
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: <Widget>[
-            TencentLive(
-              licenceURL: "http://license.vod2.myqcloud.com/license/v1/3398497c80bc447ed493826c2b45f333/TXLiveSDK.licence",
-              licenceKey: "c095e4c1b94e61d5dda523bcb3b080c9",
-              rtmpURL: "rtmp://push.rundle.cn/live/29?txSecret=a09d849fe9ca92f9692affcf263c9388&txTime=5EE0462E",
+            TencentLiveView(
+              rtmpURL: "rtmp://100747.livepush.myqcloud.com/live/1?txSecret=f6135a64dd82463bbeb8e7e0f1cb8305&txTime=5F0AB236",
               onCreated: (controller) {
                 _controller = controller;
               }
@@ -121,13 +101,13 @@ class _LivePageState extends State<LivePage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     _buttonList(Icon(Icons.ac_unit), '翻转', () {
-                                      _controller.invokeMethod('setSwitchCamera');
+                                      _controller.setSwitchCamera();
                                     }),
                                     _buttonList(Icon(Icons.ac_unit), '打开后置灯光', () {
-                                      _controller.invokeMethod('setTurnOnFlashLight');
+                                      _controller.setTurnOnFlashLight();
                                     }),
                                     _buttonList(Icon(Icons.ac_unit), '镜像模式', () {
-                                      _controller.invokeMethod('setMirror', 1);
+                                      _controller.setMirror();
                                     }),
                                   ],
                                 ),
@@ -159,7 +139,7 @@ class _LivePageState extends State<LivePage> {
                                     value: value,
                                     onChanged: (v) {
                                       setState(() =>  value = v);
-                                      _controller.invokeMethod('setDermabrasion', v.toInt());
+                                      _controller.setDermabrasion(v.toInt());
                                     },
                                     label: "磨皮:$value",//气泡的值
                                     divisions: 10, //进度条上显示多少个刻度点
@@ -176,7 +156,7 @@ class _LivePageState extends State<LivePage> {
                                     value: value2,
                                     onChanged: (v) {
                                       setState(() =>  value2 = v);
-                                      _controller.invokeMethod('setWhitening', v.toInt());
+                                      _controller.setWhitening(v.toInt());
                                     },
                                     label: "美白:$value2",//气泡的值
                                     divisions: 10, //进度条上显示多少个刻度点
@@ -193,13 +173,21 @@ class _LivePageState extends State<LivePage> {
                                     value: value3,
                                     onChanged: (v) {
                                       setState(() =>  value3 = v);
-                                      _controller.invokeMethod('setUpRuddy', v.toInt());
+                                      _controller.setUpRuddy(v.toInt());
                                     },
                                     label: "红润:$value3",//气泡的值
                                     divisions: 10, //进度条上显示多少个刻度点
                                     max: 10,
                                     min: 0,
                                   ),
+                                ),
+                                MaterialButton(
+                                  child: Text("开始直播", style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.0
+                                  )),
+                                  color: Colors.blue,
+                                  onPressed: () => _controller.startLive(),
                                 ),
                               ],
                             ),
