@@ -21,7 +21,7 @@ dependencies:
 
 ```
 dependencies:
-  rtmp_tencent_live: ^0.0.4
+  rtmp_tencent_live: ^0.0.6
 ```
 
 ### 导入
