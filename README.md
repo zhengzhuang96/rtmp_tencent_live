@@ -24,6 +24,13 @@ dependencies:
   rtmp_tencent_live: ^0.0.6
 ```
 
+### iOS 
+info.plist 文件配置
+```
+<key>io.flutter.embedded_views_preview</key>
+<true/>
+```
+
 ### 导入
 
 
@@ -31,8 +38,6 @@ dependencies:
 import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
 
 ```
-
-
 
 ## 注册license
 
@@ -74,4 +79,3 @@ TencentLive(
 |     磨皮     |   ✅    | setDermabrasion(v.toInt()) | v: 磨皮级别：0-9，0:关闭，9最大 |
 |     美白     |   ✅    |  setWhitening(v.toInt())   | v: 美白级别：0-9，0:关闭，9最大 |
 |     红润     |   ✅    |   setUpRuddy(v.toInt())    | v: 红润级别：0-9，0:关闭，9最大 |
-
