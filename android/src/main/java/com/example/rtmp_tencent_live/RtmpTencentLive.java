@@ -160,7 +160,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
 
     /// 设置红润
     protected void setUpRuddy(Map<String, Object> request, MethodChannel.Result result) {
-        _beautyLevel = (int) request.get("val");
+        _ruddyLevel = (int) request.get("val");
         setBeautyFilter();
         result.success("success");
     }
