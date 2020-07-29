@@ -4,11 +4,7 @@ version '1.0'
 buildscript {
     repositories {
         google()
-//        jcenter()
-        maven { url 'http://download.flutter.io' }
-        maven { url "https://oss.sonatype.org/content/groups/public" }
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        maven { url "https://dl.bintray.com/aweme-open-sdk-team/public" }
+        jcenter()
     }
 
     dependencies {
@@ -19,11 +15,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-//        jcenter()
-        maven { url 'http://download.flutter.io' }
-        maven { url "https://oss.sonatype.org/content/groups/public" }
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        maven { url "https://dl.bintray.com/aweme-open-sdk-team/public" }
+        jcenter()
     }
 }
 
@@ -53,3 +45,26 @@ android {
 dependencies {
     implementation 'com.tencent.liteavsdk:LiteAVSDK_Smart:7.4.9211@aar'
 }
+
+configurations.all {
+    resolutionStrategy {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'androidx.core') {
+                details.useVersion "1.0.2"
+            }
+            if (details.requested.group == 'androidx.lifecycle') {
+                details.useVersion "2.0.0"
+            }
+            if (details.requested.group == 'androidx.versionedparcelable') {
+                details.useVersion "1.0.0"
+            }
+            if (details.requested.group == 'androidx.fragment') {
+                details.useVersion "1.0.0"
+            }
+            if (details.requested.group == 'androidx.appcompat') {
+                details.useVersion "1.0.1"
+            }
+        }
+    }
+}
+ 
