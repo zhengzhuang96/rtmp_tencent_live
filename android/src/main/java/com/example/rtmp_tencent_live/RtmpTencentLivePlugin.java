@@ -1,6 +1,6 @@
 package com.example.rtmp_tencent_live;
 import android.app.Activity;
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -17,10 +17,10 @@ public class RtmpTencentLivePlugin implements FlutterPlugin, ActivityAware {
   private MethodChannel channel;
 
   @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+  public void onAttachedToEngine(@Nullable FlutterPluginBinding flutterPluginBinding) {
     this.messenger = flutterPluginBinding.getBinaryMessenger();
     this.platformViewRegistry = flutterPluginBinding.getPlatformViewRegistry();
-    new MethodChannel(this.messenger, "rtmp_tencent_live_flutter").setMethodCallHandler(new RtmpTencentLiveHandler(flutterPluginBinding.getApplicationContext()));
+//    new MethodChannel(this.messenger, "rtmp_tencent_live_flutter").setMethodCallHandler(new RtmpTencentLiveHandler(flutterPluginBinding.getApplicationContext()));
   }
 
   @Override
@@ -45,7 +45,7 @@ public class RtmpTencentLivePlugin implements FlutterPlugin, ActivityAware {
   }
 
   @Override
-  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+  public void onDetachedFromEngine(@Nullable FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
   }
 }
