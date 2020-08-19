@@ -25,7 +25,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     boolean Mirror = false;
     boolean onFlashLight = true;    /// 摄像头打开状态
     String rtmpURL; // 推荐直播
-    Context context;
+    private Context mContext;
 
     int _style = 0;             // 美颜算法：  0：光滑  1：自然  2：朦胧
     int _beautyLevel = 0;       // 磨皮等级： 取值为 0-9.取值为 0 时代表关闭美颜效果.默认值: 0,即关闭美颜效果.
@@ -36,21 +36,24 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
         //        TextView myNativeView = new TextView(context);
         //        myNativeView.setText(params.get("text").toString());
         //        this.myNativeView = myNativeView;
-        context = context;
-        Log.i("MyActivity","tencentlive_" + id);
-        MethodChannel methodChannel = new MethodChannel(messenger, "rtmptencentlivepush_" + id);
-        methodChannel.setMethodCallHandler(this);
+        mContext = context;
+
+        mView = (TXCloudVideoView) LayoutInflater.from(context).inflate(R.layout.pusher_tx_cloud_view, null);
+
+        mLivePusher = new TXLivePusher(context);
+
+        mLivePusher.startCameraPreview(mView);
 
         mLivePushConfig = new TXLivePushConfig();
-        mLivePusher = new TXLivePusher(context);
 
         // 一般情况下不需要修改 config 的默认配置
         mLivePusher.setConfig(mLivePushConfig);
 
-        mView = (TXCloudVideoView) LayoutInflater.from(context).inflate(R.layout.pusher_tx_cloud_view, null);
-        mLivePusher.startCameraPreview(mView);
+        Log.i("MyActivity","tencentlive_" + id);
+        MethodChannel methodChannel = new MethodChannel(messenger, "rtmptencentlivepush_" + id);
+        methodChannel.setMethodCallHandler(this);
 
-        rtmpURL = params.get("rtmpURL").toString(); //此处填写您的 rtmp 推流地址
+        rtmpURL = params.get("rtmpURL").toString();
     }
 
     @Override
@@ -60,7 +63,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
 
         switch (methodCall.method) {
             case "setLicence":
-                setLicence(context, request, result);
+                setLicence(mContext, request, result);
                 break;
             case "startLive":
                 startLive();
@@ -85,15 +88,6 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
                 break;
             default:
                 result.notImplemented();
-        }
-
-        if ("setText".equals(methodCall.method)) {
-            // String text = (String) methodCall.arguments;
-            // myNativeView.setText(text);
-            // result.success(null);
-            Log.i("MyActivity","校验MyClass.getView() - get item number");
-
-            setTurnOnFlashLight();
         }
     }
 
@@ -174,6 +168,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     public View getView() {
         return mView;
     }
+
 
     @Override
     public void dispose() {

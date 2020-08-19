@@ -21,7 +21,7 @@ dependencies:
 
 ```
 dependencies:
-  rtmp_tencent_live: ^0.0.6
+  rtmp_tencent_live: ^0.0.7
 ```
 
 ### iOS 
@@ -36,7 +36,6 @@ info.plist 文件配置
 
 ```dart
 import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
-
 ```
 
 ## 注册license
@@ -50,7 +49,7 @@ void main() async {
 }
 ```
 
-
+## 推流
 
 ### 页面中显示直播
 
@@ -79,3 +78,35 @@ TencentLive(
 |     磨皮     |   ✅    | setDermabrasion(v.toInt()) | v: 磨皮级别：0-9，0:关闭，9最大 |
 |     美白     |   ✅    |  setWhitening(v.toInt())   | v: 美白级别：0-9，0:关闭，9最大 |
 |     红润     |   ✅    |   setUpRuddy(v.toInt())    | v: 红润级别：0-9，0:关闭，9最大 |
+
+
+
+
+## 拉流
+
+```dart
+import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
+import 'package:rtmp_tencent_live/tencent_vider_live_controller.dart';
+
+TencentViderLiveController _controller;
+
+TencentVideoLive(
+  onCreated: (controller) async {
+    _controller = controller;
+    _controller.playStart('http://************.flv');
+    _controller.setRenderRotation('1');
+  },
+)
+```
+
+### 使用命令
+
+|              | 支持度  |           使用方法          |              介绍            |
+| :----------: | :----: | :------------------------: | :-------------------------: |
+|   开始播放    |   ✅   |        playStart()         |       直接传入播放地址         |
+|   横屏/竖屏   |   ✅   |     setRenderRotation()    |       1: 横屏，2：竖屏         |
+|   等比显示    |   ✅   |       setRenderMode()      |    1: 等比显示，2：铺满显示     |
+|   暂停播放    |   ✅   |          pause()           |                              |
+|   恢复播放    |   ✅   |          resume()          |                              |
+|   视频截图    |   ✅   |       screenCapture()      |       视频截图保存到本地        |
+|   停止播放    |   ✅   |         stopPlay()         |                              |

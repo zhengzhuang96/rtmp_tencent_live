@@ -1,6 +1,4 @@
 package com.example.rtmp_tencent_live;
-
-import android.app.Activity;
 import android.content.Context;
 
 import java.util.Map;
@@ -10,10 +8,10 @@ import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.plugin.platform.PlatformView;
 import io.flutter.plugin.platform.PlatformViewFactory;
 
-public class RtmpTencentLiveFactory extends PlatformViewFactory {
+public class VideoLiveFactory extends PlatformViewFactory {
     private final BinaryMessenger messenger;
 
-    public RtmpTencentLiveFactory(BinaryMessenger messenger) {
+    public VideoLiveFactory(BinaryMessenger messenger) {
         super(StandardMessageCodec.INSTANCE);
         this.messenger = messenger;
     }
@@ -21,6 +19,6 @@ public class RtmpTencentLiveFactory extends PlatformViewFactory {
     @Override
     public PlatformView create(Context context, int id, Object args) {
         Map<String, Object> params = (Map<String, Object>) args;
-        return new RtmpTencentLive(context, messenger, id, params);
+        return new VideoLive(context, messenger, id, params);
     }
 }

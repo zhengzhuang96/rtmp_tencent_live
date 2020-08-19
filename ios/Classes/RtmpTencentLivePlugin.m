@@ -1,18 +1,17 @@
 #import "RtmpTencentLivePlugin.h"
 #import "RtmpTencentFactory.h"
 #import "TXLiteAVSDK_Professional/TXLiteAVSDK.h"
+#import "VideoTencentFactory.h"
 
 @implementation RtmpTencentLivePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"rtmp_tencent_live_flutter"
-            binaryMessenger:[registrar messenger]];
+  FlutterMethodChannel* channel = [FlutterMethodChannel methodChannelWithName:@"rtmp_tencent_live_flutter" binaryMessenger:[registrar messenger]];
   RtmpTencentLivePlugin* instance = [[RtmpTencentLivePlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];
     
   [registrar registerViewFactory:[[RtmpTencentFactory alloc] initWithMessager:registrar.messenger]withId:@"TencentLive"];
     
-    
+  [registrar registerViewFactory:[[VideoTencentFactory alloc] initWithMessager:registrar.messenger]withId:@"TencentVideoLive"];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
