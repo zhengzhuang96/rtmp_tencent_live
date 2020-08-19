@@ -19,7 +19,7 @@
     self = [super init];
     if (self) {
         // Do any additional setup after loading the view.
-//        NSString * const licenceURL = @"http://license.vod2.myqcloud.com/license/v1/3398497c80bc447ed493826c2b45f333/TXLiveSDK.licence";
+//      NSString * const licenceURL = @"http://license.vod2.myqcloud.com/license/v1/3398497c80bc447ed493826c2b45f333/TXLiveSDK.licence";
 //        NSString * const licenceKey = @"c095e4c1b94e61d5dda523bcb3b080c9";
 //         NSString * const licenceURL = dic[@"licenceURL"];
 //         NSString * const licenceKey = dic[@"licenceKey"];
