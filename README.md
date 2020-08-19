@@ -27,6 +27,10 @@ dependencies:
 ### iOS 
 info.plist 文件配置
 ```
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>请求使用相册</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>请求使用相册</string>
 <key>io.flutter.embedded_views_preview</key>
 <true/>
 ```
