@@ -21,7 +21,7 @@ dependencies:
 
 ```
 dependencies:
-  rtmp_tencent_live: ^0.0.7
+  rtmp_tencent_live: ^0.0.8
 ```
 
 ### iOS 

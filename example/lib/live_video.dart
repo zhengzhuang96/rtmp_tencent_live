@@ -2,7 +2,7 @@
  * @Author: zhengzhuang
  * @Date: 2020-08-15 11:22:02
  * @LastEditors: zhengzhuang
- * @LastEditTime: 2020-08-19 11:57:23
+ * @LastEditTime: 2020-08-19 14:39:32
  * @Description: 播放直播
  * @FilePath: /rtmp_tencent_live/example/lib/live_video.dart
  */
