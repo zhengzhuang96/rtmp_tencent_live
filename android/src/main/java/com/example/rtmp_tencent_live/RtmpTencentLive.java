@@ -101,11 +101,11 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     }
 
     /// 开始直播
-    int void startLive() {
+    protected int startLive() {
         Log.i(TAG, "开始直播");
         int ret = mLivePusher.startPusher(rtmpURL.trim());
         Log.i(TAG, "startRTMPPush: license 校验结果" + ret);
-        if (ret == -5) {
+        if (  == -5) {
             Log.i(TAG, "startRTMPPush: license 校验失败");
         }
         return; ret;
