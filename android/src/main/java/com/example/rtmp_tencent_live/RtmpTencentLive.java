@@ -108,7 +108,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
         if (  == -5) {
             Log.i(TAG, "startRTMPPush: license 校验失败");
         }
-        return; ret;
+        return ret;
     }
 
     /// 切换前后摄像头
