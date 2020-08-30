@@ -66,7 +66,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
                 setLicence(mContext, request, result);
                 break;
             case "startLive":
-                startLive();
+                result.success(startLive());
                 break;
             case "setSwitchCamera":
                 setSwitchCamera();

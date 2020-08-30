@@ -96,6 +96,7 @@
        // 此处填写您的 rtmp 推流地址
         int i = [camera.pusher startPush:rtmpUrl];
        NSLog(@"1111111111---    %d",i);
+       result(i);
     }
 }
 
