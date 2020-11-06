@@ -66,7 +66,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
                 setLicence(mContext, request, result);
                 break;
             case "startLive":
-                startLive();
+                result.success(startLive());
                 break;
             case "setSwitchCamera":
                 setSwitchCamera();
@@ -101,13 +101,14 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     }
 
     /// 开始直播
-    protected void startLive() {
+    protected int startLive() {
         Log.i(TAG, "开始直播");
         int ret = mLivePusher.startPusher(rtmpURL.trim());
         Log.i(TAG, "startRTMPPush: license 校验结果" + ret);
         if (ret == -5) {
             Log.i(TAG, "startRTMPPush: license 校验失败");
         }
+        return ret;
     }
 
     /// 切换前后摄像头
