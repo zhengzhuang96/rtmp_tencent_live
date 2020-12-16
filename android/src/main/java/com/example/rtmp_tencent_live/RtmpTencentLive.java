@@ -3,8 +3,11 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import com.example.rtmp_tencent_live.liveroom.IMLVBLiveRoomListener;
+import com.example.rtmp_tencent_live.liveroom.MLVBLiveRoomImpl;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.rtmp.TXLiveBase;
+import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -26,6 +29,8 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     boolean onFlashLight = true;    /// 摄像头打开状态
     String rtmpURL; // 推荐直播
     private Context mContext;
+    private MLVBLiveRoomImpl mLVBLiveRoomImpl;
+
 
     int _style = 0;             // 美颜算法：  0：光滑  1：自然  2：朦胧
     int _beautyLevel = 0;       // 磨皮等级： 取值为 0-9.取值为 0 时代表关闭美颜效果.默认值: 0,即关闭美颜效果.
@@ -46,8 +51,12 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
 
         mLivePushConfig = new TXLivePushConfig();
 
+        mLVBLiveRoomImpl = new MLVBLiveRoomImpl(mContext);
+
         // 一般情况下不需要修改 config 的默认配置
         mLivePusher.setConfig(mLivePushConfig);
+
+        mLVBLiveRoomImpl.sharedInstance(mContext);
 
         Log.i("MyActivity","tencentlive_" + id);
         MethodChannel methodChannel = new MethodChannel(messenger, "rtmptencentlivepush_" + id);
@@ -86,6 +95,8 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
             case "setUpRuddy":
                 setUpRuddy(request, result);
                 break;
+            case "setOrientationChange":
+                onOrientationChange(request, result);
             default:
                 result.notImplemented();
         }
@@ -165,6 +176,29 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
         mLivePusher.setBeautyFilter(_style, _beautyLevel, _whiteningLevel, _ruddyLevel);
     }
 
+    protected void onOrientationChange(Map<String, Object> request, MethodChannel.Result result) {
+        boolean isPortrait = (boolean) request.get("val");
+        if (isPortrait) {
+            mLivePushConfig.setHomeOrientation(TXLiveConstants.VIDEO_ANGLE_HOME_DOWN);
+            mLivePusher.setConfig(mLivePushConfig);
+            mLivePusher.setRenderRotation(0);
+        } else {
+            mLivePushConfig.setHomeOrientation(TXLiveConstants.VIDEO_ANGLE_HOME_RIGHT);
+            mLivePusher.setConfig(mLivePushConfig);
+            // 因为采集旋转了，为了保证本地渲染是正的，则设置渲染角度为90度。
+            mLivePusher.setRenderRotation(90);
+        }
+    }
+
+//    public abstract void requestJoinAnchor(String reason, IMLVBLiveRoomListener.RequestJoinAnchorCallback callback);
+
+
+    /// 连麦申请
+    protected void setLianmai() {
+//        mLVBLiveRoomImpl.requestRoomPK("123123", (IMLVBLiveRoomListener.RequestRoomPKCallback) requestRoomPKCallbackClass);
+    }
+
+
     @Override
     public View getView() {
         return mView;
@@ -175,5 +209,7 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
     public void dispose() {
         mLivePusher.stopPusher();
         mLivePusher.stopCameraPreview(true); //如果已经启动了摄像头预览，请在结束推流时将其关闭。
+
+        mLVBLiveRoomImpl.destroySharedInstance();
     }
 }

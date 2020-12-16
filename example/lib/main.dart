@@ -14,8 +14,8 @@ import 'live_video.dart';
 void main() async {
   runApp(MyApp());
   await TencentLive.instance.init(
-      licenseUrl: 'http://license.vod2.myqcloud.com/license/v1/a062c6677c9e5273ee05e7df6f087810/TXLiveSDK.licence',
-      licenseKey: '5bf89b2c4cf8ab1ca33a36ff20137071'
+      licenseUrl: 'http://license.vod2.myqcloud.com/license/v1/3398497c80bc447ed493826c2b45f333/TXLiveSDK.licence',
+      licenseKey: 'c095e4c1b94e61d5dda523bcb3b080c9'
   );
 }
 

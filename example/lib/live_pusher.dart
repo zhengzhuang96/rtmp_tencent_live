@@ -44,7 +44,7 @@ class _LivePusherState extends State<LivePusher> {
         child: Stack(
           children: <Widget>[
             TencentLiveView(
-              rtmpURL: "rtmp://100747.livepush.myqcloud.com/live/1?txSecret=f6135a64dd82463bbeb8e7e0f1cb8305&txTime=5F0AB236",
+              rtmpURL: "rtmp://push.rundle.cn/live/1?txSecret=43f6e75373b542a9d4cfce11da1765cf&txTime=5F4F67B3",
               onCreated: (controller) async {
                 _controller = controller;
               }
