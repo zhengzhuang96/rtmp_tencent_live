@@ -1,6 +1,6 @@
 name: rtmp_tencent_live
 description: 腾讯推流直播flutter版本
-version: 0.0.8
+version: 0.0.8+1
 # author:
 homepage: https://github.com/zhengzhuang96/rtmp_tencent_live.git
 
