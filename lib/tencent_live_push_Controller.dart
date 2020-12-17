@@ -56,4 +56,9 @@ class TencentLivePushController {
   Future setUpRuddy(v) async {
     return await _channel.invokeMethod('setUpRuddy', { 'val': v.toInt() });
   }
+
+  /// 横屏推流
+  Future setOrientationChange(bool isPortrait) async {
+    return await _channel.invokeMethod('setOrientationChange', {"val": isPortrait});
+  }
 }

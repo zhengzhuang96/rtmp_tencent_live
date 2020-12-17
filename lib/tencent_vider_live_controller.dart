@@ -58,9 +58,4 @@ class TencentViderLiveController {
   Future screenCapture() async {
     return await _channel.invokeMethod('screenCapture');
   }
-
-  /// 横屏推流
-  Future setOrientationChange(bool isPortrait) async {
-    return await _channel.invokeMethod('setOrientationChange', {"renderMode": isPortrait});
-  }
 }
