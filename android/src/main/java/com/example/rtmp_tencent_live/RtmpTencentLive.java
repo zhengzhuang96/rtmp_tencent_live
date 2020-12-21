@@ -181,12 +181,12 @@ public class RtmpTencentLive implements PlatformView, MethodChannel.MethodCallHa
         if (isPortrait) {
             mLivePushConfig.setHomeOrientation(TXLiveConstants.VIDEO_ANGLE_HOME_DOWN);
             mLivePusher.setConfig(mLivePushConfig);
-            mLivePusher.setRenderRotation(0);
+            // mLivePusher.setRenderRotation(0);
         } else {
             mLivePushConfig.setHomeOrientation(TXLiveConstants.VIDEO_ANGLE_HOME_RIGHT);
             mLivePusher.setConfig(mLivePushConfig);
             // 因为采集旋转了，为了保证本地渲染是正的，则设置渲染角度为90度。
-            mLivePusher.setRenderRotation(90);
+            // mLivePusher.setRenderRotation(90);
         }
     }
 
