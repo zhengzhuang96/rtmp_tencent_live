@@ -3,6 +3,7 @@
 
 腾讯直播flutter插件
 
+承接各种前端项目，flutter App项目<br />
 有问题欢迎提issues，或者欢迎加入flutter腾讯直播，群聊号码：1128573542
 
 ### 安装
