@@ -112,3 +112,7 @@ TencentVideoLive(
 |   恢复播放    |   ✅   |          resume()          |                              |
 |   视频截图    |   ✅   |       screenCapture()      |       视频截图保存到本地        |
 |   停止播放    |   ✅   |         stopPlay()         |                              |
+
+### 如果你喜欢这个插件，可以请作者喝杯咖啡
+ ![image](https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/alipay.jpeg)
+ ![image](https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/wxapy.jpeg)
