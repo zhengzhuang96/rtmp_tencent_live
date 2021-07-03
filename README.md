@@ -1,3 +1,4 @@
+English | [简体中文](./README.zh-CN.md)
 # rtmp_tencent_live
 [![pub package](https://img.shields.io/pub/v/rtmp_tencent_live.svg)](https://pub.flutter-io.cn/packages/rtmp_tencent_live)
 
