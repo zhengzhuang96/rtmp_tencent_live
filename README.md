@@ -10,7 +10,7 @@ If you have any questions, please mention issues, or join the live broadcast of 
 
 Adding dependencies in pubspec.yaml
 
-``` 
+```
 dependencies:
   rtmp_tencent_live:
     git:
@@ -25,7 +25,7 @@ dependencies:
   rtmp_tencent_live: ^0.0.8
 ```
 
-### iOS 
+### iOS
 info.plist File configuration
 ```
 <key>NSPhotoLibraryAddUsageDescription</key>
@@ -48,7 +48,7 @@ import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
 ```
 void main() async {
   await TencentLive.instance.init(
-      licenseUrl: 'http://******.licence', 
+      licenseUrl: 'http://******.licence',
       licenseKey: '******'
   );
 }
@@ -74,15 +74,15 @@ TencentLive(
 
 ### Using commands
 
-|                         | Support |          usage method     |                     introduce               |
-| :---------------------: | :-----: | :-----------------------: | :-----------------------------------------: |
-| Live broadcast          |   ✅    |        startLive()         |                                            |
-|  Flip camera            |   ✅    |     setSwitchCamera()      |                                            |
-| Turn on the rear lights |   ✅    |   setTurnOnFlashLight()    |   Only available in the rear camera state  |
-|   Mirror mode           |   ✅    |        setMirror()         |         Client display status              |
-|     Moulting            |   ✅    | setDermabrasion(v.toInt()) | v: Grinding level: 0-9, 0: off, 9: max     |
-|     skin whitening      |   ✅    |  setWhitening(v.toInt())   | v: Whitening level: 0-9, 0: off, 9 max     |
-|     Ruddy               |   ✅    |   setUpRuddy(v.toInt())    | v: Ruddy level: 0-9, 0: off, 9: maximum    |
+|                         | Support |        usage method        |                introduce                |
+| :---------------------: | :-----: | :------------------------: | :-------------------------------------: |
+|     Live broadcast      |    ✅    |        startLive()         |                                         |
+|       Flip camera       |    ✅    |     setSwitchCamera()      |                                         |
+| Turn on the rear lights |    ✅    |   setTurnOnFlashLight()    | Only available in the rear camera state |
+|       Mirror mode       |    ✅    |        setMirror()         |          Client display status          |
+|        Moulting         |    ✅    | setDermabrasion(v.toInt()) | v: Grinding level: 0-9, 0: off, 9: max  |
+|     skin whitening      |    ✅    |  setWhitening(v.toInt())   | v: Whitening level: 0-9, 0: off, 9 max  |
+|          Ruddy          |    ✅    |   setUpRuddy(v.toInt())    | v: Ruddy level: 0-9, 0: off, 9: maximum |
 
 
 ## 拉流
@@ -104,19 +104,19 @@ TencentVideoLive(
 
 ### Using commands
 
-|                                  | Support|       usage method        |              introduce                        |
-| :------------------------------: | :----: | :-----------------------: | :-------------------------: |
-|          Start playing           |   ✅   |        playStart()         |       Direct incoming playback address       |
-|   Horizontal / vertical screen   |   ✅   |     setRenderRotation()    |  1: Horizontal screen, 2: vertical screen    |
-|      Proportional display        |   ✅   |       setRenderMode()      |  1: Proportional display, 2: full display    |
-|           Pause play             |   ✅   |          pause()           |                                              |
-|         Resume playback          |   ✅   |          resume()          |                                              |
-|           Video capture          |   ✅   |       screenCapture()      |       Save video capture to local            |
-|          stop playing            |   ✅   |         stopPlay()         |                                              |
+|                              | Support |    usage method     |                introduce                 |
+| :--------------------------: | :-----: | :-----------------: | :--------------------------------------: |
+|        Start playing         |    ✅    |     playStart()     |     Direct incoming playback address     |
+| Horizontal / vertical screen |    ✅    | setRenderRotation() | 1: Horizontal screen, 2: vertical screen |
+|     Proportional display     |    ✅    |   setRenderMode()   | 1: Proportional display, 2: full display |
+|          Pause play          |    ✅    |       pause()       |                                          |
+|       Resume playback        |    ✅    |      resume()       |                                          |
+|        Video capture         |    ✅    |   screenCapture()   |       Save video capture to local        |
+|         stop playing         |    ✅    |     stopPlay()      |                                          |
 
 ### If you like this plugin, you can buy the author a cup of coffee
 
 <div style="display: float;">
-  <img src="https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/alipay.jpeg" width="200" alt="支付宝"/>
-  <img src="https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/wxapy.jpeg" width="200" alt="微信"/>
+  <img src="./assets/alipay.jpeg" width="200" alt="支付宝"/>
+  <img src="./assets/wxapy.jpeg" width="200" alt="微信"/>
 </div>

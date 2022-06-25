@@ -10,7 +10,7 @@
 
 在工程 pubspec.yaml 中加入 dependencies
 
-``` 
+```
 dependencies:
   rtmp_tencent_live:
     git:
@@ -25,7 +25,7 @@ dependencies:
   rtmp_tencent_live: ^0.0.8
 ```
 
-### iOS 
+### iOS
 info.plist 文件配置
 ```
 <key>NSPhotoLibraryAddUsageDescription</key>
@@ -48,7 +48,7 @@ import 'package:rtmp_tencent_live/rtmp_tencent_live.dart';
 ```
 void main() async {
   await TencentLive.instance.init(
-      licenseUrl: 'http://******.licence', 
+      licenseUrl: 'http://******.licence',
       licenseKey: '******'
   );
 }
@@ -104,19 +104,19 @@ TencentVideoLive(
 
 ### 使用命令
 
-|              | 支持度  |           使用方法          |              介绍            |
-| :----------: | :----: | :------------------------: | :-------------------------: |
-|   开始播放    |   ✅   |        playStart()         |       直接传入播放地址         |
-|   横屏/竖屏   |   ✅   |     setRenderRotation()    |       1: 横屏，2：竖屏         |
-|   等比显示    |   ✅   |       setRenderMode()      |    1: 等比显示，2：铺满显示     |
-|   暂停播放    |   ✅   |          pause()           |                              |
-|   恢复播放    |   ✅   |          resume()          |                              |
-|   视频截图    |   ✅   |       screenCapture()      |       视频截图保存到本地        |
-|   停止播放    |   ✅   |         stopPlay()         |                              |
+|           | 支持度 |      使用方法       |           介绍           |
+| :-------: | :----: | :-----------------: | :----------------------: |
+| 开始播放  |   ✅    |     playStart()     |     直接传入播放地址     |
+| 横屏/竖屏 |   ✅    | setRenderRotation() |     1: 横屏，2：竖屏     |
+| 等比显示  |   ✅    |   setRenderMode()   | 1: 等比显示，2：铺满显示 |
+| 暂停播放  |   ✅    |       pause()       |                          |
+| 恢复播放  |   ✅    |      resume()       |                          |
+| 视频截图  |   ✅    |   screenCapture()   |    视频截图保存到本地    |
+| 停止播放  |   ✅    |     stopPlay()      |                          |
 
 ### 如果你喜欢这个插件，可以请作者喝杯咖啡
 
 <div style="display: float;">
-  <img src="https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/alipay.jpeg" width="200" alt="支付宝"/>
-  <img src="https://github.com/zhengzhuang96/rtmp_tencent_live/blob/master/assets/wxapy.jpeg" width="200" alt="微信"/>
+  <img src="./assets/alipay.jpeg" width="200" alt="支付宝"/>
+  <img src="./assets/wxapy.jpeg" width="200" alt="微信"/>
 </div>
